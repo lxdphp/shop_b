@@ -74,7 +74,7 @@
         <el-form-item label="商品图片:" :label-width="formLabelWidth">
           <el-upload
             class="avatar-uploader"
-            action="http://127.0.0.1:7001/uploadImg"
+            action="http://120.48.96.203:7001/uploadImg"
             :show-file-list="false"
             :on-success="handleAvatarSuccess"
             :before-upload="beforeAvatarUpload"
@@ -148,13 +148,13 @@ export default {
       const isJPG = file.type === 'image/jpeg'
       const isLt2M = file.size / 1024 / 1024 < 200
 
-      if (!isJPG) {
-        this.$message.error('上传头像图片只能是 JPG 格式!')
-      }
+      // if (!isJPG) {
+      //   this.$message.error('上传头像图片只能是 JPG 格式!')
+      // }
       if (!isLt2M) {
         this.$message.error('上传头像图片大小不能超过 2MB!')
       }
-      return isJPG && isLt2M
+      return isLt2M
     },
     fetchData() {
       this.listLoading = true
