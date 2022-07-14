@@ -10,18 +10,19 @@
       border
       fit
       highlight-current-row
+      width="100%"
     >
-      <el-table-column align="center" label="ID" >
+      <el-table-column align="center" label="ID">
         <template slot-scope="scope">
           {{ scope.row.id }}
         </template>
       </el-table-column>
-      <el-table-column label="分类名称" >
+      <el-table-column label="分类名称">
         <template slot-scope="scope">
           {{ scope.row.name }}
         </template>
       </el-table-column>
-      <el-table-column align="center" prop="created_at" label="创建时间" >
+      <el-table-column align="center" prop="created_at" label="创建时间">
         <template slot-scope="scope">
           <i class="el-icon-time" />
           <span>{{ scope.row.created_time }}</span>
@@ -30,17 +31,17 @@
       <el-table-column
         fixed="right"
         label="操作"
-        >
+      >
         <template slot-scope="scope">
           <!-- <el-button @click="handleClick(scope.row)" type="text" size="small">查看</el-button> -->
           <el-button type="text" size="small" @click="delCategory(scope.row)">删除</el-button>
         </template>
-    </el-table-column>
+      </el-table-column>
     </el-table>
-    <el-dialog title="创建分类" :visible.sync="dialogFormVisible">
+    <el-dialog title="创建分类" :visible.sync="dialogFormVisible" width="100%">
       <el-form :model="form">
         <el-form-item label="分类名称:" :label-width="formLabelWidth">
-          <el-input v-model="form.name" autocomplete="off"></el-input>
+          <el-input v-model="form.name" autocomplete="off" />
         </el-form-item>
         <!-- <el-form-item label="一级分类" :label-width="formLabelWidth">
           <el-select v-model="form.region" placeholder="请选择一级分类">
@@ -112,7 +113,7 @@ export default {
       })
     },
     delCategory(data) {
-      const id = data.id;
+      const id = data.id
       del({ id }).then(() => {
         this.fetchData()
       }).catch(() => {

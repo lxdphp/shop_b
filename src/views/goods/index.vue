@@ -10,6 +10,7 @@
       border
       fit
       highlight-current-row
+      width="100%"
     >
       <el-table-column align="center" label="ID" width="95">
         <template slot-scope="scope">
@@ -29,7 +30,7 @@
       <el-table-column label="商品图片">
         <template slot-scope="scope">
           <i class="el-icon-time" />
-          <img :src=scope.row.img width="100" height="100" />
+          <img :src="scope.row.img" width="100" height="100">
         </template>
       </el-table-column>
       <el-table-column label="描述">
@@ -51,39 +52,40 @@
       <el-table-column
         fixed="right"
         label="操作"
-        width="100">
+        width="100"
+      >
         <template slot-scope="scope">
           <!-- <el-button @click="infoGoods(scope.row)" type="text" size="small">查看</el-button> -->
           <el-button type="text" size="small" @click="delGoods(scope.row)">删除</el-button>
         </template>
-    </el-table-column>
+      </el-table-column>
     </el-table>
-    <el-dialog title="创建商品" :visible.sync="dialogFormVisible">
+    <el-dialog title="创建商品" :visible.sync="dialogFormVisible" width="100%">
       <el-form :model="form">
         <el-form-item label="商品名称:" :label-width="formLabelWidth">
-          <el-input v-model="form.title" autocomplete="off"></el-input>
+          <el-input v-model="form.title" autocomplete="off" />
         </el-form-item>
         <el-form-item label="商品价格:" :label-width="formLabelWidth">
-          <el-input v-model="form.price" autocomplete="off"></el-input>
+          <el-input v-model="form.price" autocomplete="off" />
         </el-form-item>
         <el-form-item label="商品描述:" :label-width="formLabelWidth">
-          <el-input v-model="form.des" autocomplete="off"></el-input>
+          <el-input v-model="form.des" autocomplete="off" />
         </el-form-item>
         <el-form-item label="商品图片:" :label-width="formLabelWidth">
-        <el-upload
-          class="avatar-uploader"
-          action="http://127.0.0.1:7001/uploadImg"
+          <el-upload
+            class="avatar-uploader"
+            action="http://127.0.0.1:7001/uploadImg"
             :show-file-list="false"
-          :on-success="handleAvatarSuccess"
-          :before-upload="beforeAvatarUpload">
-          <img v-if="imageUrl" :src="imageUrl" class="avatar">
-          <i v-else class="el-icon-plus avatar-uploader-icon"></i>
-        </el-upload>
+            :on-success="handleAvatarSuccess"
+            :before-upload="beforeAvatarUpload"
+          >
+            <img v-if="imageUrl" :src="imageUrl" class="avatar">
+            <i v-else class="el-icon-plus avatar-uploader-icon" />
+          </el-upload>
         </el-form-item>
         <el-form-item label="商品分类" :label-width="formLabelWidth">
           <el-select v-model="form.category_id" placeholder="请选择商品分类">
-            <el-option v-for="(item,index) in categorylist" :key="index"  :label=item.name :value=item.id >
-            </el-option>
+            <el-option v-for="(item,index) in categorylist" :key="index" :label="item.name" :value="item.id" />
           </el-select>
         </el-form-item>
       </el-form>
